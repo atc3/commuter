@@ -79,7 +79,7 @@ class File extends React.Component<*> {
       case "png":
         return (
           <img
-            src={`/files/${this.props.pathname}`}
+            src={`/commuter/files/${this.props.pathname}`}
             alt={this.props.pathname}
           />
         );
@@ -89,7 +89,7 @@ class File extends React.Component<*> {
             <Source language="text/plain">{this.props.entry.content}</Source>
           );
         }
-        return <a href={`/files/${this.props.pathname}`}>Download raw file</a>;
+        return <a href={`/commuter/files/${this.props.pathname}`}>Download raw file</a>;
     }
   }
 }

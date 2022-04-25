@@ -24,5 +24,9 @@ function webpackConfig(_config, options) {
 }
 
 module.exports = {
-  webpack: webpackConfig
+  webpack: webpackConfig,
+  basePath: '/commuter',
+  env: {
+    COMMUTER_PREFIX: '/commuter',
+  },
 };

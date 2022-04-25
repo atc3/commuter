@@ -5,6 +5,7 @@ import Link from "next/link";
 class IndexPage extends React.Component<*> {
   static async getInitialProps(ctx: Object) {
     if (ctx.res) {
+      console.log('asdf')
       // Server side, do a redirect using the HTTP response object
       ctx.res.writeHead(302, { Location: "/view/" });
       ctx.res.end();

@@ -22,7 +22,7 @@ class CommuterMenu extends React.Component<*> {
 
   static defaultProps = {
     active: "view",
-    discoveryEnabled: true
+    discoveryEnabled: false
   };
 
   handleItemClick = (e: SyntheticEvent<*>, { name }: { name: string }) => {
@@ -33,12 +33,13 @@ class CommuterMenu extends React.Component<*> {
     this.props.active === current ? "active" : "";
 
   render() {
+    const baseUrl = process.env.COMMUTER_PREFIX || '';
     return (
       <nav className="main-header">
         <ul className="items">
           <li>
             <Link href={"/view"}>
-              <img src="/static/logo.png" alt="nteract logo" />
+              <img src={`${baseUrl}/static/logo.png`} alt="nteract logo" />
             </Link>
           </li>
           <li className={this.isActiveClass("view")}>

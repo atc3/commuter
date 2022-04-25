@@ -58,8 +58,10 @@ function createServer() {
         const q = Object.assign({}, { viewPath }, query);
         return frontend.app.render(req, res, "/view", q);
       }
-
-      const newPath = req.path.replace(/^\/view/, "/files");
+      console.log(config.baseUrl);
+      // const viewRegex = new RegExp(`^${config.baseUrl}/view`, 'g');
+      const newPath = req.path.replace(/^\/commuter\/view/, '/commuter/files');
+      // const newPath = req.path.replace(viewRegex, `${config.baseUrl}/files`);
       res.redirect(newPath);
       return;
     };
@@ -71,14 +73,14 @@ function createServer() {
       return frontend.handle(req, res);
     };
 
-    router.get(["/view", "/view*"], viewHandler);
+    router.get(["/commuter/view", "/commuter/view*"], viewHandler);
     router.get("*", passToNext);
-
+    
     // TODO: Leaving this here for the eventual baseURL handling
-    const baseURI = "/";
+    const baseURI = '/';
     app.use(baseURI, router);
     // TODO: This is duplicate until we're doing proper baseURL handling
-    app.get(["/view", "/view*"], viewHandler);
+    app.get(["/commuter/view", "/commuter/view*"], viewHandler);
     app.use(passToNext);
 
     const server = http.createServer(app);

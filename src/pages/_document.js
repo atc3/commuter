@@ -11,10 +11,11 @@ class MyDocument extends Document {
   }
 
   render() {
+    const baseUrl = process.env.COMMUTER_PREFIX || '';
     return (
       <html lang="en-US">
         <Head>
-          <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+          <link rel="stylesheet" type="text/css" href={`${baseUrl}/static/nprogress.css`} />
 
           <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" />
 
@@ -55,7 +56,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             type="text/css"
           />
-          <link rel="stylesheet" type="text/css" href="/static/commuter.css" />
+          <link rel="stylesheet" type="text/css" href={`${baseUrl}/static/commuter.css`} />
 
           <script src="https://cdn.plot.ly/plotly-latest.min.js" />
 

@@ -43,12 +43,19 @@ class ViewPage extends React.Component<ViewPageProps, ViewPageState> {
     if (req) {
       // Server side, communicate with our local API
       const port = process.env.COMMUTER_PORT || 4000;
-      BASE_PATH = `http://127.0.0.1:${port}/`;
+      BASE_PATH = `http://127.0.0.1:${port}`;
     } else {
-      BASE_PATH = "/";
+      BASE_PATH = "";
     }
 
-    const url = `${BASE_PATH}api/contents/${viewPath}`;
+    const BASE_PREFIX = process.env.COMMUTER_PREFIX;
+
+    // console.log(BASE_PATH);
+    // console.log(BASE_PREFIX);
+
+    const url = `${BASE_PATH}${BASE_PREFIX}/api/contents/${viewPath}`;
+
+    // console.log(url);
 
     const xhr = await getJSON(url).toPromise();
 

@@ -36,8 +36,8 @@ function createRouter(config): express.Router {
 
   const router = express.Router();
 
-  router.use("/api", apiRouter);
-  router.use("/files", contentsProvider.createFilesRouter(config.storage));
+  router.use("/commuter/api", apiRouter);
+  router.use("/commuter/files", contentsProvider.createFilesRouter(config.storage));
 
   return router;
 }
