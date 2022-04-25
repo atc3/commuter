@@ -87,7 +87,7 @@ function createServer() {
 
     return new Promise(accept => {
       // $FlowFixMe
-      server.listen(config.port, () => accept(server));
+      server.listen(config.port, 'localhost', () => accept(server));
     });
   });
 }
